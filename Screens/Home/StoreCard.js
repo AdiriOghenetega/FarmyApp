@@ -1,58 +1,68 @@
-import {View, StyleSheet, Image, SafeAreaView, Platform, TouchableOpacity, Text, TextInput, TextInputComponent} from 'react-native';
-import colors from '../../configs/colors';
-import GlassmorphicInput from '../../configs/GlassmorphicInput';
-import { AntDesign } from '@expo/vector-icons';
+import {
+  View,
+  StyleSheet,
+  Image,
+  SafeAreaView,
+  Platform,
+  TouchableOpacity,
+  Text,
+  TextInput,
+  TextInputComponent,
+  Modal,
+} from "react-native";
+import React, { useState } from "react";
+import colors from "../../configs/colors";
+import GlassmorphicInput from "../../configs/GlassmorphicInput";
+import { AntDesign } from "@expo/vector-icons";
+import StoreDetail from "./StoreDetails";
 
-const StoreCard = ({onPress, imageUrl, storeName, storeDescription, distance}) => {
-return (
+const StoreCard = ({ imageUrl, storeName, storeDescription, distance }) => {
+  const [openStoreDetails, setOpenStoreDetails] = useState(false);
+  // console.log(openStoreDetails)
+  return (
+    <View style={styles.container}>
+      <Modal visible={openStoreDetails}>
+        <View>
+          <StoreDetail setOpenStoreDetails={setOpenStoreDetails} />
+        </View>
+      </Modal>
+      <TouchableOpacity
+        style={styles.storeBox}
+        onPress={() => setOpenStoreDetails(true)}
+      >
+        <View style={styles.storeLogo}>
+          <Image style={styles.storeLogoImage} source={imageUrl} />
+        </View>
 
-            <View style={styles.container}>
-                <TouchableOpacity style={styles.storeBox}
-                    onPress={onPress}
-                >
-                    <View style={styles.storeLogo}>
-                        <Image
-                            style={styles.storeLogoImage}
-                            source={imageUrl}
-                        />
-                    </View>
+        <View style={styles.storeDetailsBox}>
+          <Text style={styles.storeName}>{storeName}</Text>
+          <Text style={styles.storeDetailsText}>{storeDescription}</Text>
+        </View>
 
-                    <View style={styles.storeDetailsBox}>
-                        <Text style={styles.storeName}>{storeName}</Text>
-                        <Text style={styles.storeDetailsText}>
-                            {storeDescription}
-                        </Text>
-                </View>
+        <View style={styles.storeRatings}>
+          <View style={styles.storeStars}>
+            <AntDesign name="star" size={12} color={colors.lightgold} />
+            <AntDesign name="star" size={12} color={colors.lightgold} />
+            <AntDesign name="star" size={12} color={colors.lightgold} />
+            <AntDesign name="star" size={12} color={colors.lightgold} />
+            <AntDesign name="star" size={12} color={colors.lightgold} />
+          </View>
 
-                <View style={styles.storeRatings}>
-                    <View style={styles.storeStars}>
-                        <AntDesign name="star" size={12} color={colors.lightgold}/>
-                        <AntDesign name="star" size={12} color={colors.lightgold}/>
-                        <AntDesign name="star" size={12} color={colors.lightgold}/>
-                        <AntDesign name="star" size={12} color={colors.lightgold}/>
-                        <AntDesign name="star" size={12} color={colors.lightgold}/>
-                    </View>
-
-                    <View>
-                        <Text style={styles.storeDistance}>
-                            {distance}
-                        </Text>
-                    </View>
-                </View>
-                </TouchableOpacity>
-            </View>
-
-   );
- }
-
+          <View>
+            <Text style={styles.storeDistance}>{distance}</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-
- container:{
+  container: {
     padding: 10,
- },
+  },
 
- storeBox:{
+  storeBox: {
     padding: 10,
     paddingHorizontal: 20,
     flexDirection: "row",
@@ -61,60 +71,59 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     shadowColor: "#000000",
     shadowOffset: {
-        width: -1.5,
-        height: 0.5,
+      width: -1.5,
+      height: 0.5,
     },
     shadowOpacity: 0.36,
     shadowRadius: 2,
-    elevation: 3
- },
+    elevation: 3,
+  },
 
- storeLogo:{
+  storeLogo: {
     // borderWidth: 1,
-    width: "24%"
- },
+    width: "24%",
+  },
 
-storeLogoImage:{
-    width:80,
-    height:80,
-    borderRadius: 50
-},
- 
-storeDetailsBox:{
+  storeLogoImage: {
+    width: 80,
+    height: 80,
+    borderRadius: 50,
+  },
+
+  storeDetailsBox: {
     // borderWidth: 1,
     paddingHorizontal: 20,
-    width: "60%"
-},
+    width: "60%",
+  },
 
-storeName:{
+  storeName: {
     fontSize: 14,
     fontFamily: "RalewayBold",
     color: colors.primary,
-},
+  },
 
-storeDetailsText:{
+  storeDetailsText: {
     marginTop: 10,
     textAlign: "justify",
     fontSize: 12,
-    fontFamily: "RalewayMedium"
-},
+    fontFamily: "RalewayMedium",
+  },
 
-storeRatings:{ 
+  storeRatings: {
     width: "18%",
     // borderWidth: 1,
     alignItems: "space-between",
     justifyContent: "space-between",
-    height: 70
-},
-storeStars:{
-    flexDirection: "row"
-},
+    height: 70,
+  },
+  storeStars: {
+    flexDirection: "row",
+  },
 
-storeDistance: {
+  storeDistance: {
     fontFamily: "RalewaySemiBold",
     fontSize: 12,
-    color: colors.primary
-}
-
- })
+    color: colors.primary,
+  },
+});
 export default StoreCard;

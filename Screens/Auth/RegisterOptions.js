@@ -70,7 +70,7 @@ const RegisterOptions = ({ navigation, route }) => {
   const [userInfo, setUserInfo] = useState(null);
 
   const {selectedAccount, setSelectedAccount} = useContext(Context)
-console.log(selectedAccount)
+
 
   //HANDLE FORM REGISTRATION
   const handleBuyerFormChange = (name, text) => {

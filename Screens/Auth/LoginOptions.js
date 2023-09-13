@@ -13,7 +13,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 
-import { useState, useEffect ,useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import Context from "../../Context/UserContext";
 import * as LoginAuthentication from "expo-local-authentication";
 import colors from "../../configs/colors";
@@ -38,9 +38,8 @@ const LoginOptions = ({ navigation, route }) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
 
-  const {selectedAccount, setSelectedAccount} = useContext(Context)
+  const { selectedAccount, setSelectedAccount } = useContext(Context);
 
-  console.log(selectedAccount)
 
   //HANDLE LOGIN
   const handleLogin = () => {

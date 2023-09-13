@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet,Text, Image, TouchableOpacity, FlatList} from 'react-native';
+import {View, StyleSheet,Text, Image, TouchableOpacity, FlatList,SafeAreaView} from 'react-native';
 import colors from '../../configs/colors';
 import LogisticsCard from './LogisticsCard';
 
@@ -63,7 +63,7 @@ const logistics = [
 
 const Logistics =()=>{
 return (
-  <View style={styles.container}>
+  <SafeAreaView style={styles.container}>
       <Text style={styles.headText}>Choose a Logistics</Text>
     <View style={styles.logisticsHeaderContainer}>
        <View style={styles.logisticsContainerText}>
@@ -101,7 +101,7 @@ return (
             />    
           }
         />
-  </View>
+  </SafeAreaView>
    );
  }
 
