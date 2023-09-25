@@ -12,6 +12,7 @@ import RegisterOptions from "../../Screens/Auth/RegisterOptions";
 import ForgotPassword from "../../Screens/Auth/ForgotPassword";
 import OtpScreen from "../../Screens/Auth/OtpScreen";
 import ResetPassword from "../../Screens/Auth/ResetPassword";
+import Checkout from "../../Screens/Order/Checkout";
 //IMPORT TABBAR
 import MyTabBar from "./TabBar";
 import Context from "../../Context/UserContext";
@@ -22,12 +23,12 @@ const Tab = createBottomTabNavigator();
 const AppNavigator = ({ navigation }) => {
   const { user, setUser } = useContext(Context);
 
-  console.log(user);
-  
+  console.log(user)
+  //user?.name ? "Home":"LoginCategory"
 
   return (
     <Tab.Navigator
-      initialRouteName={user?.name ? "Home":"LoginCategory"}
+      initialRouteName={"Home"}
       tabBar={(props) => <MyTabBar {...props} />}
       screenOptions={({ route }) => ({
         tabBarActiveTintColor: colors.primary,
@@ -67,6 +68,13 @@ const AppNavigator = ({ navigation }) => {
       <Tab.Screen
         name="Cart"
         component={Cart}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Checkout"
+        component={Checkout}
         options={{
           headerShown: false,
         }}

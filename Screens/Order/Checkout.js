@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {View, StyleSheet, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
+import {View, StyleSheet, Text, Image, TouchableOpacity, ScrollView,SafeAreaView} from 'react-native';
 import colors from '../../configs/colors';
 import { Ionicons } from '@expo/vector-icons';
 import CustomModal from './CustomModal';
@@ -34,6 +34,8 @@ const Checkout =({navigation}) =>{
 
 
     return (
+      <SafeAreaView>
+
     <ScrollView style={styles.container}>
            <View style={styles.headerContainer}>
                 <View style={styles.arrowIcon}>
@@ -207,6 +209,7 @@ const Checkout =({navigation}) =>{
             </View>
         </View>
     </ScrollView>
+      </SafeAreaView>
    );
  }
 

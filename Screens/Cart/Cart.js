@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, FlatList,SafeAreaView} from 'react-native';
           // ICONS 
 import { Ionicons } from '@expo/vector-icons';
 
@@ -43,7 +43,7 @@ const cartItems = [
 ]
 
     return(
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View style={styles.headerContainer}>
               <View style={styles.arrowIcon}>
                   <Ionicons 
@@ -93,7 +93,7 @@ const cartItems = [
             </View>
         </View>
 
-        </View>
+        </SafeAreaView>
     )
 }
 
