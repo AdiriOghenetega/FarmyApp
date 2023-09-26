@@ -82,7 +82,7 @@ const styles= StyleSheet.create({
 
       mainContainer:{
         borderRadius: 15,
-        width: "90%",
+        width: "100%",
         flexDirection: "row",
         backgroundColor: colors.white,
         borderRadius: 10,

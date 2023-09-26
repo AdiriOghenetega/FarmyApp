@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   View,
   StyleSheet,
@@ -10,59 +10,99 @@ import {
   TextInput,
   ScrollView,
   FlatList,
+  TouchableWithoutFeedback,
+  Keyboard,
 } from "react-native";
 import colors from "../../configs/colors";
 import { AntDesign } from "@expo/vector-icons";
 import StoreCard from "./StoreCard";
+import StoreProductCard from "./StoreProductCard";
 import CustomTabs from "../../configs/customTabs";
-import { products,data } from "./data";
+import { products, data, storeProducts } from "./data";
 
 const SearchPage = ({ navigation }) => {
-  
-
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("store");
+  const [searchInput, setSearchInput] = useState("");
+  const [selectedList, setSelectedList] = useState(products);
+  const [filterdedData, setFilteredData] = useState(selectedList);
 
   // SELECT Category TYPE LOGIC
   const handleCategoryPress = (CategoryId) => {
     setSelectedCategory(CategoryId);
   };
 
-  
-  console.log(selectedCategory)
+  useEffect(() => {
+    let filter = selectedList.filter(
+      (elem) =>
+        elem.storeName?.toLowerCase().includes(searchInput?.toLowerCase()) ||
+        elem.productTitle?.toLowerCase().includes(searchInput?.toLowerCase())
+    );
+
+    setFilteredData(filter);
+  }, [searchInput, selectedList]);
+
+  useEffect(() => {
+    setSelectedList(
+      selectedCategory === "farm" || selectedCategory === "store"
+        ? products
+        : storeProducts
+    );
+    setSearchInput("");
+  }, [selectedCategory]);
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image
-          source={require("../../assets/images/flogo.png")}
-          style={styles.logo}
-        />
-      </View>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <View style={styles.logoContainer}>
+          <Image
+            source={require("../../assets/images/flogo.png")}
+            style={styles.logo}
+          />
+        </View>
+      </TouchableWithoutFeedback>
 
-      <CustomTabs data={data} handleCategoryPress={handleCategoryPress} selectedCategory={selectedCategory} />
+      <CustomTabs
+        data={data}
+        handleCategoryPress={handleCategoryPress}
+        selectedCategory={selectedCategory}
+      />
 
       <View style={styles.searchMainView}>
         <TextInput
           placeholder="Search for products, store or farms"
           style={styles.searchTextInput}
+          onChangeText={(text) => {
+            setSearchInput(text);
+          }}
+          value={searchInput}
         />
 
-        <TouchableOpacity style={styles.filterContainer}>
-          <AntDesign name="filter" size={34} color={colors.primary} />
-        </TouchableOpacity>
+        {/* <TouchableOpacity style={styles.filterContainer}>
+          <AntDesign name="filter" size={24} color={colors.primary} />
+        </TouchableOpacity> */}
       </View>
       <FlatList
-        data={products}
-        keyExtractor={(product) => product.id.toString()}
+        data={filterdedData}
+        keyExtractor={(product) => product.id.toString() + selectedCategory}
         horizontal={false}
-        renderItem={({ item }) => (
-          <StoreCard
-            imageUrl={item.image}
-            storeName={item.storeName}
-            storeDescription={item.storeDescription}
-            distance={item.distance}
-          />
-        )}
+        numColumns={2}
+        renderItem={({ item }) =>
+          selectedCategory === "farm" || selectedCategory === "store" ? (
+            <StoreCard
+              imageUrl={item.image}
+              storeName={item.storeName}
+              storeDescription={item.storeDescription}
+              distance={item.distance}
+            />
+          ) : (
+            <StoreProductCard
+              image={item.image}
+              store={item.store}
+              productTitle={item.productTitle}
+              price={item.price}
+            />
+          )
+        }
       />
     </SafeAreaView>
   );
@@ -85,12 +125,12 @@ const styles = StyleSheet.create({
 
   searchMainView: {
     padding: 10,
-    flexDirection: "row",
+    alignItems: "center",
   },
 
   searchTextInput: {
     borderRadius: 10,
-    width: "80%",
+    width: "90%",
     padding: 15,
     backgroundColor: colors.white,
     borderRadius: 10,

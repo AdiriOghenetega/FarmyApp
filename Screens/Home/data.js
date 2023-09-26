@@ -1,6 +1,54 @@
 import farmImg from "../../assets/images/farmer.png"
 import storeImg from "../../assets/images/store.png"
 
+export const storeProducts = [
+  {
+    id: 1,
+    image: require("../../assets/images/product.jpg"),
+    store: "McDonalds",
+    productTitle: "Big Bitter Burger Size",
+    location:"Abuja",
+    price: "3,999.99",
+  },
+
+  {
+    id: 2,
+    image: require("../../assets/images/chickem.jpg"),
+    store: "McDonalds",
+    productTitle: "Chicken",
+    location:"Lagos",
+    price: "1599.99",
+  },
+
+  {
+    id: 3,
+    image: require("../../assets/images/Dough.jpg"),
+    store: "McDonalds",
+    productTitle: "Doughnut",
+    location:"Port Harcourt",
+    price: "3,999.99",
+  },
+
+  {
+    id: 4,
+    image: require("../../assets/images/Waffles.jpg"),
+    store: "McDonalds",
+    productTitle: "Chicken and Waffles",
+    location:"Ogun",
+    price: "3,999.99",
+  },
+
+  {
+    id: 5,
+    image: require("../../assets/images/product.jpg"),
+    store: "McDonalds",
+    productTitle: "Big Bitter Burger Size",
+    location:"Delta",
+    price: "3,999.99",
+  },
+];
+
+
 export const products = [
     {
       id: 1,

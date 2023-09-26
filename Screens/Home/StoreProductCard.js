@@ -11,9 +11,9 @@ import colors from "../../configs/colors";
 import { FontAwesome } from "@expo/vector-icons";
 import ProductDetail from "./ProductDetails";
 
-const StoreProductCard = ({ image, store, price, productTitle }) => {
+const StoreProductCard = ({ image, store, price, productTitle ,selectedCategory}) => {
   const [openStoreProduct, setOpenStoreProduct] = useState(false);
-  console.log(openStoreProduct);
+
   return (
     <View style={styles.container}>
       <Modal visible={openStoreProduct}>

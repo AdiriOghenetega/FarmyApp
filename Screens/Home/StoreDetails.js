@@ -15,51 +15,11 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 import colors from "../../configs/colors";
 import StoreProductCard from "./StoreProductCard";
+import { storeProducts } from "./data";
 
 const { height, width } = Dimensions.get("window");
 
 const StoreDetail = ({ setOpenStoreDetails }) => {
-  const products = [
-    {
-      id: 1,
-      image: require("../../assets/images/product.jpg"),
-      store: "McDonalds",
-      productTitle: "Big Bitter Burger Size",
-      price: "3,999.99",
-    },
-
-    {
-      id: 2,
-      image: require("../../assets/images/chickem.jpg"),
-      store: "McDonalds",
-      productTitle: "Chicken",
-      price: "1599.99",
-    },
-
-    {
-      id: 3,
-      image: require("../../assets/images/Dough.jpg"),
-      store: "McDonalds",
-      productTitle: "Doughnut",
-      price: "3,999.99",
-    },
-
-    {
-      id: 4,
-      image: require("../../assets/images/Waffles.jpg"),
-      store: "McDonalds",
-      productTitle: "Chicken and Waffles",
-      price: "3,999.99",
-    },
-
-    {
-      id: 5,
-      image: require("../../assets/images/product.jpg"),
-      store: "McDonalds",
-      productTitle: "Big Bitter Burger Size",
-      price: "3,999.99",
-    },
-  ];
 
   return (
     <SafeAreaView style={styles.container}>
@@ -113,7 +73,7 @@ const StoreDetail = ({ setOpenStoreDetails }) => {
       </View>
 
       <FlatList
-        data={products}
+        data={storeProducts}
         keyExtractor={(product) => product.id.toString()}
         horizontal={false}
         numColumns={2}
@@ -123,7 +83,6 @@ const StoreDetail = ({ setOpenStoreDetails }) => {
             store={item.store}
             productTitle={item.productTitle}
             price={item.price}
-            // onPress={()=> navigation.navigate("ProductDetails")}
           />
         )}
       />

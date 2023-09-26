@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, FlatList,SafeAreaView} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, FlatList,SafeAreaView,Dimensions} from 'react-native';
           // ICONS 
 import { Ionicons } from '@expo/vector-icons';
 
 import colors from '../../configs/colors';
 import CartCard from './CartCard.js';
+import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 
+const {height,width}=Dimensions.get("window")
 
 const Cart = ({navigation}) =>{
 const cartItems = [
@@ -63,8 +65,24 @@ const cartItems = [
               </TouchableOpacity>
 
             </View>
-
-            {/* CART ITEMS */}
+            <View style={{flex: 1}}>
+    <ProgressSteps >
+        <ProgressStep 
+        label="First Step" 
+        nextBtnText={"proceed to checkout"} 
+        nextBtnStyle={styles.progressNextButton} 
+        nextBtnTextStyle={styles.progressNextButtonText}
+        scrollable={false}
+        viewProps={{
+          style:{
+            marginBottom:15,
+            height:450,
+            width:width,
+            padding:0
+          }
+        }}
+        >
+            <View style={{ alignItems: 'center' }}>
             <FlatList
                 data={cartItems}
                 keyExtractor={(cartItem) => cartItem.id.toString}
@@ -80,7 +98,7 @@ const cartItems = [
                 }
             />
 
-         <View style={styles.bottomContainer}>
+         {/* <View style={styles.bottomContainer}>
             <TouchableOpacity style={styles.cartButton}
               onPress={()=> navigation.navigate("Checkout")}
             >
@@ -91,7 +109,23 @@ const cartItems = [
                 <Text style={styles.priceSymbol}> $</Text>
                 <Text style={styles.price}> 3,500</Text>
             </View>
-        </View>
+        </View> */}
+            </View>
+        </ProgressStep>
+        <ProgressStep label="Second Step">
+            <View style={{ alignItems: 'center' }}>
+                <Text>This is the content within step 2!</Text>
+            </View>
+        </ProgressStep>
+        <ProgressStep label="Third Step">
+            <View style={{ alignItems: 'center' }}>
+                <Text>This is the content within step 3!</Text>
+            </View>
+        </ProgressStep>
+    </ProgressSteps>
+</View>
+            {/* CART ITEMS */}
+           
 
         </SafeAreaView>
     )
@@ -172,7 +206,18 @@ const styles = StyleSheet.create({
         marginTop: -4,
         marginLeft: -6,
     },
-    
+    progressNextButton:{
+      width:200,
+      alignItems:"center",
+      justifyContent:"center",
+      backgroundColor:colors.lightbrown,
+      padding:15,
+      borderRadius:10,
+      marginRight:25,
+    },
+    progressNextButtonText:{
+      color:colors.white
+    }
 })
 
 export default Cart;

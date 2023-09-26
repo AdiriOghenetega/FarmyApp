@@ -16,9 +16,9 @@ import GlassmorphicInput from "../../configs/GlassmorphicInput";
 import { AntDesign } from "@expo/vector-icons";
 import StoreDetail from "./StoreDetails";
 
-const StoreCard = ({ imageUrl, storeName, storeDescription, distance }) => {
+const StoreCard = ({ imageUrl, storeName, storeDescription, distance}) => {
   const [openStoreDetails, setOpenStoreDetails] = useState(false);
-  // console.log(openStoreDetails)
+  
   return (
     <View style={styles.container}>
       <Modal visible={openStoreDetails}>

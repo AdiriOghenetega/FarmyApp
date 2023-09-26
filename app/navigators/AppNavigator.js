@@ -23,7 +23,7 @@ const Tab = createBottomTabNavigator();
 const AppNavigator = ({ navigation }) => {
   const { user, setUser } = useContext(Context);
 
-  console.log(user)
+  
   //user?.name ? "Home":"LoginCategory"
 
   return (

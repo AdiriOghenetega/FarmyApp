@@ -12,7 +12,7 @@ const colors = {
     blueFaded: '#8D8FAD',
     purple: "#2127b9",
     lightpurple: "#8a86d0",
-    lightbrown: '#b28957',
+    lightbrown: '#D8A008',
     lightgold: '#FF9900',
     red: "#FF0000",
     offwhite: "#ebe6e6",
