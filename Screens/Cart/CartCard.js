@@ -81,17 +81,16 @@ const styles= StyleSheet.create({
       },
 
       mainContainer:{
-        borderRadius: 15,
-        width: "100%",
+        width: "90%",
         flexDirection: "row",
         backgroundColor: colors.white,
         borderRadius: 10,
         shadowColor: "#000000",
         shadowOffset: {
-            width: -1.5,
+            width: 1.5,
             height: 0.5,
         },
-        shadowOpacity: 0.36,
+        shadowOpacity: 6,
         shadowRadius: 2,
         elevation: 3
       },
@@ -150,7 +149,7 @@ const styles= StyleSheet.create({
         borderRadius: 50,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.primary
+        backgroundColor: colors.lightbrown
      },
 
      incrementText:{
@@ -184,7 +183,7 @@ const styles= StyleSheet.create({
         width: 30,
         height: 30,
         borderRadius: 50,
-        backgroundColor:colors.red,
+        backgroundColor:colors.primary,
      }
 })
 

@@ -1,223 +1,180 @@
-import { useState } from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, FlatList,SafeAreaView,Dimensions} from 'react-native';
-          // ICONS 
-import { Ionicons } from '@expo/vector-icons';
+import { useState } from "react";
+import {
+  Text,
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  FlatList,
+  SafeAreaView,
+  Dimensions,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import colors from "../../configs/colors";
+import { ProgressSteps, ProgressStep } from "react-native-progress-steps";
+import CartPage from "./cartPage";
+import CartAddressPage from "./cartAddressPage";
+import CartPaymentPage from "./cartPaymentPage";
+import { globalStyles } from "../../styles/globalStyles";
 
-import colors from '../../configs/colors';
-import CartCard from './CartCard.js';
-import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
+const { height, width } = Dimensions.get("screen");
 
-const {height,width}=Dimensions.get("window")
-
-const Cart = ({navigation}) =>{
-const cartItems = [
-  {
-      id: 1,
-      image:require('../../assets/images/chicken.jpg'),
-      storeName: "FoodCo",
-      productName: "Burger",
-      price: "2500"
-  },
-
-  {
-    id: 2,
-    image:require('../../assets/images/chickem.jpg'),
-    storeName: "Chicken Republic",
-    productName: "Burger",
-    price: "2500"
-},
-
-{
-  id: 3,
-  image:require('../../assets/images/Dough.jpg'),
-  storeName: "FoodCo",
-  productName: "Burger",
-  price: "250"
-},
-
-{
-  id: 4,
-  image:require('../../assets/images/[profilepic]1.jpg'),
-  storeName: "Obasanjo Farms",
-  productName: "Christmas Cow",
-  price: "250000"
-}
-]
-
-    return(
-        <SafeAreaView style={styles.container}>
-            <View style={styles.headerContainer}>
-              <View style={styles.arrowIcon}>
-                  <Ionicons 
-                    name="ios-arrow-back" 
-                    size={23} 
-                    color={colors.primary}
-                    onPress={() => navigation.goBack()} 
-                  />
-              </View>
-
-              <View style={styles.headerTitle}>
-                <Text style={styles.headerTitleText}>Cart</Text>
-              </View>
-
-              <TouchableOpacity>
-                <Text style={styles.clearText}>Clear(2)</Text>
-              </TouchableOpacity>
-
-            </View>
-            <View style={{flex: 1}}>
-    <ProgressSteps >
-        <ProgressStep 
-        label="First Step" 
-        nextBtnText={"proceed to checkout"} 
-        nextBtnStyle={styles.progressNextButton} 
-        nextBtnTextStyle={styles.progressNextButtonText}
-        scrollable={false}
-        viewProps={{
-          style:{
-            marginBottom:15,
-            height:450,
-            width:width,
-            padding:0
-          }
-        }}
-        >
-            <View style={{ alignItems: 'center' }}>
-            <FlatList
-                data={cartItems}
-                keyExtractor={(cartItem) => cartItem.id.toString}
-                horizontal={false}
-                renderItem={({item})=>
-                 <CartCard
-                       imageUrl={item.image}
-                       storeName={item.storeName}
-                       productName={item.productName}
-                       price={item.price}
-                       onPress={()=> navigation.navigate("StoreDetail")}
-                 />
-                }
-            />
-
-         {/* <View style={styles.bottomContainer}>
-            <TouchableOpacity style={styles.cartButton}
-              onPress={()=> navigation.navigate("Checkout")}
-            >
-                 <Text style={styles.cartButtonText}>Checkout</Text>
-            </TouchableOpacity>
-            
-            <View style={styles.priceContainer}>
-                <Text style={styles.priceSymbol}> $</Text>
-                <Text style={styles.price}> 3,500</Text>
-            </View>
-        </View> */}
-            </View>
-        </ProgressStep>
-        <ProgressStep label="Second Step">
-            <View style={{ alignItems: 'center' }}>
-                <Text>This is the content within step 2!</Text>
-            </View>
-        </ProgressStep>
-        <ProgressStep label="Third Step">
-            <View style={{ alignItems: 'center' }}>
-                <Text>This is the content within step 3!</Text>
-            </View>
-        </ProgressStep>
-    </ProgressSteps>
-</View>
-            {/* CART ITEMS */}
-           
-
-        </SafeAreaView>
-    )
-}
+const Cart = ({ navigation }) => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <View
+        style={[
+          styles.headerContainer,
+          globalStyles.shadowContainer,
+          {
+            shadowOffset: {
+              width: 1,
+              height: 2,
+            },
+          },
+        ]}
+      >
+        <View style={styles.arrowIcon}>
+          <Ionicons
+            name="ios-arrow-back"
+            size={23}
+            color={colors.primary}
+            onPress={() => navigation.goBack()}
+          />
+        </View>
+      </View>
+      <View style={{ flex: 1 }}>
+        <ProgressSteps>
+          <ProgressStep
+            label="Cart"
+            nextBtnText={"proceed to checkout"}
+            nextBtnStyle={styles.progressNextButton}
+            nextBtnTextStyle={styles.progressNextButtonText}
+            scrollable={false}
+            viewProps={{
+              style: styles.viewProps,
+            }}
+          >
+            <CartPage />
+          </ProgressStep>
+          <ProgressStep
+            label="Address"
+            nextBtnText={"proceed\n to payment"}
+            previousBtnText={"previous"}
+            nextBtnStyle={{
+              ...styles.progressNextButton,
+              marginRight: -25,
+              width: 150,
+            }}
+            nextBtnTextStyle={styles.progressNextButtonText}
+            previousBtnStyle={{
+              ...styles.progressNextButton,
+              marginRight: 25,
+              width: 100,
+            }}
+            previousBtnTextStyle={styles.progressNextButtonText}
+            scrollable={false}
+            viewProps={{
+              style: styles.viewProps,
+            }}
+          >
+            <CartAddressPage />
+          </ProgressStep>
+          <ProgressStep
+            label="Payment"
+            finishBtnText={"pay\n ₦3,500"}
+            previousBtnText={"previous"}
+            nextBtnStyle={{
+              ...styles.progressNextButton,
+              marginRight: -25,
+              width: 150,
+            }}
+            nextBtnTextStyle={styles.progressNextButtonText}
+            previousBtnStyle={{
+              ...styles.progressNextButton,
+              marginRight: 25,
+              width: 100,
+            }}
+            previousBtnTextStyle={styles.progressNextButtonText}
+            scrollable={false}
+            viewProps={{
+              style: styles.viewProps,
+            }}
+          >
+            <CartPaymentPage />
+          </ProgressStep>
+        </ProgressSteps>
+      </View>
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
-    container:{
-      flex:1
-    },
-    headerContainer:{
-        paddingHorizontal: 15,
-        paddingVertical: 8,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        borderColor: colors.lightgray,
-        borderBottomWidth: 0.5,
-      },
-  
-      arrowIcon:{
-        // width: "35%"
-      },
-  
-      headerTitle:{
-        // width: "75%"
-      },
-  
-      headerTitleText:{
-        fontFamily:"RalewayBold",
-        fontSize: 16,
-        color: colors.primary
-      },
+  container: {
+    flex: 1,
+  },
+  headerContainer: {
+    paddingHorizontal: 15,
+    backgroundColor: colors.white,
+    paddingBottom: 8,
+  },
+  bottomContainer: {
+    padding: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
 
-      clearText:{
-        fontFamily:"RalewayMedium",
-        fontSize: 14,
-        color: colors.primary
-      },
+  cartButton: {
+    width: "70%",
+    padding: 15,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: colors.primary,
+    borderRadius: 15,
+  },
 
-      bottomContainer:{
-        padding: 20,
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-    },
-    
-    cartButton: {
-        width: "70%",
-        padding: 15,
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: colors.primary,
-        borderRadius: 15
-    
-    },
-    
-    cartButtonText:{
-        color: colors.white,
-        fontFamily: "RalewayBold",
-        fontSize: 19,
-    },
-    
-    priceContainer:{
-        flexDirection: "row"
-    },
-    
-    
-    priceSymbol:{
-        fontFamily:"RalewayBold",
-        fontSize: 30,
-        color: colors.primary
-    },
-    
-    price:{
-        fontFamily:"RalewayBold",
-        fontSize: 28,
-        color: colors.primary,
-        marginTop: -4,
-        marginLeft: -6,
-    },
-    progressNextButton:{
-      width:200,
-      alignItems:"center",
-      justifyContent:"center",
-      backgroundColor:colors.lightbrown,
-      padding:15,
-      borderRadius:10,
-      marginRight:25,
-    },
-    progressNextButtonText:{
-      color:colors.white
-    }
-})
+  cartButtonText: {
+    color: colors.white,
+    fontFamily: "RalewayBold",
+    fontSize: 19,
+  },
+
+  priceContainer: {
+    flexDirection: "row",
+  },
+
+  priceSymbol: {
+    fontFamily: "RalewayBold",
+    fontSize: 30,
+    color: colors.primary,
+  },
+
+  price: {
+    fontFamily: "RalewayBold",
+    fontSize: 28,
+    color: colors.primary,
+    marginTop: -4,
+    marginLeft: -6,
+  },
+  progressNextButton: {
+    width: 200,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: colors.lightbrown,
+    padding: 11,
+    borderRadius: 10,
+    marginRight: 25,
+  },
+  progressNextButtonText: {
+    color: colors.white,
+    textAlign: "center",
+  },
+  viewProps: {
+    marginBottom: 15,
+    height: height - 350,
+    width: width,
+    padding: 0,
+  },
+});
 
 export default Cart;
