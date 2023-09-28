@@ -22,7 +22,7 @@ const IncrementButton = () => {
     return(
         <View style={styles.main}>
         <View style={styles.mainContainer}>
-            <View style={styles.imageContainer}>
+            <View >
                 <Image
                     style={styles.productImage}
                     source={imageUrl}
