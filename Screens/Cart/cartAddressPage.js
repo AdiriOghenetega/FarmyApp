@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ScrollView,Dimensions } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Dimensions } from "react-native";
 import React from "react";
 import colors from "../../configs/colors";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -149,13 +149,13 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     paddingHorizontal: 25,
     backgroundColor: colors.white,
-    width:width-40
+    width: width - 40,
   },
   dropDownButton: {
     width: "100%",
     fontSize: 13,
     borderRadius: 10,
-    padding:9
+    padding: 9,
   },
   costContainer: {
     flexDirection: "row",

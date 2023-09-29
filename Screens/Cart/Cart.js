@@ -19,11 +19,11 @@ import { globalStyles } from "../../styles/globalStyles";
 const { height, width } = Dimensions.get("screen");
 
 const Cart = ({ navigation }) => {
-  const [openSuccessFul,setOpenSuccessful]=useState(false)
+  const [openSuccessFul, setOpenSuccessful] = useState(false);
 
-  const handleSuccessModal = ()=>{
-    setOpenSuccessful(prev=>!prev)
-  }
+  const handleSuccessModal = () => {
+    setOpenSuccessful((prev) => !prev);
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -107,7 +107,11 @@ const Cart = ({ navigation }) => {
             }}
             onSubmit={handleSuccessModal}
           >
-            <CartPaymentPage handleSuccessModal={handleSuccessModal} openSuccessFul={openSuccessFul} navigation={navigation} />
+            <CartPaymentPage
+              handleSuccessModal={handleSuccessModal}
+              openSuccessFul={openSuccessFul}
+              navigation={navigation}
+            />
           </ProgressStep>
         </ProgressSteps>
       </View>

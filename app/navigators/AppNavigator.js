@@ -13,6 +13,7 @@ import ForgotPassword from "../../Screens/Auth/ForgotPassword";
 import OtpScreen from "../../Screens/Auth/OtpScreen";
 import ResetPassword from "../../Screens/Auth/ResetPassword";
 import Checkout from "../../Screens/Order/Checkout";
+import Order from "../../Screens/Order/order";
 //IMPORT TABBAR
 import MyTabBar from "./TabBar";
 import Context from "../../Context/UserContext";
@@ -73,8 +74,8 @@ const AppNavigator = ({ navigation }) => {
         }}
       />
       <Tab.Screen
-        name="Checkout"
-        component={Checkout}
+        name="Order"
+        component={Order}
         options={{
           headerShown: false,
         }}

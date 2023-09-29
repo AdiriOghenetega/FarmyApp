@@ -97,7 +97,7 @@ export default function SuccessPage({ handleCloseSuccessModal, navigation }) {
                   color="black"
                   style={{ marginRight: 2 }}
                 />
-                <Text style={{ ...styles.backHomeText, fontSize: 17 }}>
+                <Text style={{ ...styles.backHomeText, fontSize: 17,color:colors.black }}>
                   Get PDF Reciept
                 </Text>
               </View>

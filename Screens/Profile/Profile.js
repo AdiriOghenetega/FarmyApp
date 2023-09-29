@@ -141,12 +141,13 @@ export default function ProfileScreen({ navigation }) {
             <Text style={styles.profileContentText}>Cart</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.profileContentBox}>
+          <TouchableOpacity style={styles.profileContentBox} 
+          onPress={() => navigation.navigate("Order")}
+          >
             <Image
               source={require("../../assets/images/order.png")}
               style={styles.profileContentPic}
             />
-
             <Text style={styles.profileContentText}>Orders</Text>
           </TouchableOpacity>
         </View>
