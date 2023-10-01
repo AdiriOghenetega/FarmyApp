@@ -7,75 +7,72 @@ import {
   Dimensions,
   FlatList,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import {
+  Ionicons,
+  MaterialIcons,
+  FontAwesome,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import colors from "../../configs/colors";
 
-const { width } = Dimensions.get("window");
-
-const VirtualizedList = ({ children }) => {
-  return (
-    <FlatList
-      data={[]}
-      keyExtractor={() => "key"}
-      renderItem={null}
-      ListHeaderComponent={<>{children}</>}
-    />
-  );
-};
+const { width, height } = Dimensions.get("window");
 
 export default function ProfileScreen({ navigation }) {
-
-  const handleLogout =async()=>{
+  const handleLogout = async () => {
     var requestOptions = {
-      method: 'POST',
-      redirect: 'follow'
+      method: "POST",
+      redirect: "follow",
     };
-    try{
-      const sendData= await fetch("https://farmyapp-smju.onrender.com/api/v1/user/logout", requestOptions)
-      const dataRes = await sendData.json()
-      dataRes && navigation.replace("LoginCategory")
-      console.log(dataRes)
-    }catch(error){
-    console.log(error)
+    try {
+      const sendData = await fetch(
+        "https://farmyapp-smju.onrender.com/api/v1/user/logout",
+        requestOptions
+      );
+      const dataRes = await sendData.json();
+      dataRes && navigation.replace("LoginCategory");
+      console.log(dataRes);
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      <VirtualizedList>
-        <ImageBackground
-          source={require("../../assets/images/mcdo.jpg")}
-          style={styles.coverPhoto}
-        >
-          <View style={styles.coverPhotoOverlay}>
-            <View style={styles.navigationTop}>
-              <View style={styles.blurArrowContainer}>
-                <Ionicons
-                  name="ios-arrow-back"
-                  size={27}
-                  color={colors.white}
-                  onPress={() => navigation.goBack()}
-                />
-              </View>
-
-              <TouchableOpacity style={styles.blurArrowContainer}>
-                <Ionicons name="settings" size={24} color={colors.white} />
-              </TouchableOpacity>
+      <ImageBackground
+        source={require("../../assets/images/mcdo.jpg")}
+        style={styles.coverPhoto}
+      >
+        <View style={styles.coverPhotoOverlay}>
+          <View style={styles.navigationTop}>
+            <View style={styles.blurArrowContainer}>
+              <Ionicons
+                name="ios-arrow-back"
+                size={27}
+                color={colors.white}
+                onPress={() => navigation.goBack()}
+              />
             </View>
-          </View>
-        </ImageBackground>
-        <View style={styles.storeProfilePicContainer}>
-          <View style={styles.storePicContainer}>
-            <Image
-              source={require("../../assets/images/mcd.jpg")}
-              style={styles.storeProfilePic}
-            />
+
+            <TouchableOpacity style={styles.blurArrowContainer}>
+              <Ionicons name="settings" size={24} color={colors.white} />
+            </TouchableOpacity>
           </View>
         </View>
+      </ImageBackground>
+      <View style={styles.storeProfilePicContainer}>
+        <View style={styles.storePicContainer}>
+          <Image
+            source={require("../../assets/images/mcd.jpg")}
+            style={styles.storeProfilePic}
+          />
+        </View>
+      </View>
 
-        <View style={styles.storeNameContainer}>
+      <View style={styles.storeNameContainer}>
+        <View>
           <View style={styles.storeNameBox}>
             <Text style={styles.storeName}>McDonalds</Text>
             <MaterialIcons
@@ -90,7 +87,6 @@ export default function ProfileScreen({ navigation }) {
             <Text style={styles.storeUserName}>@mcdonaldsng</Text>
           </View>
         </View>
-
         <View style={styles.followStatContainer}>
           <View style={styles.followInfoStatBox}>
             <Text style={styles.followTextNumber}>2</Text>
@@ -101,103 +97,157 @@ export default function ProfileScreen({ navigation }) {
             <Text style={styles.followerText}>Followers</Text>
           </View>
         </View>
+      </View>
 
-        <View style={styles.profileContentContainerBox}>
-          <TouchableOpacity
-            style={styles.profileContentBox}
-            onPress={() => navigation.navigate("StoreDetail")}
-          >
-            <Image
-              source={require("../../assets/images/Shop.png")}
-              style={styles.profileContentPic}
-            />
+      <View style={styles.contentContainer}>
+        <ScrollView style={styles.scrollSize}>
+          <View style={styles.profileContentContainerBox}>
+            <TouchableOpacity
+              style={styles.profileContentBox}
+              onPress={() => navigation.navigate("StoreDetail")}
+            >
+              <MaterialIcons
+                name="store"
+                size={34}
+                color={colors.otherprimary}
+              />
 
-            <Text style={styles.profileContentText}>My Store</Text>
-          </TouchableOpacity>
+              <Text style={styles.profileContentText}>My Store</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity
-            style={styles.profileContentBox}
-            onPress={() => navigation.navigate("Notifications")}
-          >
-            <Image
-              source={require("../../assets/images/bell.png")}
-              style={styles.profileContentPic}
-            />
+            <TouchableOpacity
+              style={styles.profileContentBox}
+              onPress={() => navigation.navigate("Notification")}
+            >
+              <Ionicons
+                name="notifications"
+                size={34}
+                color={colors.otherprimary}
+              />
 
-            <Text style={styles.profileContentText}>Notifications</Text>
-          </TouchableOpacity>
-        </View>
+              <Text style={styles.profileContentText}>Notifications</Text>
+            </TouchableOpacity>
+          </View>
 
-        <View style={styles.profileContentContainerBox}>
-          <TouchableOpacity
-            style={styles.profileContentBox}
-            onPress={() => navigation.navigate("Cart")}
-          >
-            <Image
-              source={require("../../assets/images/cart.png")}
-              style={styles.profileContentPic}
-            />
+          <View style={styles.profileContentContainerBox}>
+            <TouchableOpacity
+              style={styles.profileContentBox}
+              onPress={() => navigation.navigate("Cart")}
+            >
+              <MaterialIcons
+                name="shopping-cart"
+                size={34}
+                color={colors.otherprimary}
+              />
 
-            <Text style={styles.profileContentText}>Cart</Text>
-          </TouchableOpacity>
+              <Text style={styles.profileContentText}>Cart</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.profileContentBox} 
-          onPress={() => navigation.navigate("Order")}
-          >
-            <Image
-              source={require("../../assets/images/order.png")}
-              style={styles.profileContentPic}
-            />
-            <Text style={styles.profileContentText}>Orders</Text>
-          </TouchableOpacity>
-        </View>
+            <TouchableOpacity
+              style={styles.profileContentBox}
+              onPress={() => navigation.navigate("Order")}
+            >
+              <MaterialIcons
+                name="library-books"
+                size={34}
+                color={colors.otherprimary}
+              />
+              <Text style={styles.profileContentText}>Orders</Text>
+            </TouchableOpacity>
+          </View>
 
-        <View style={styles.profileContentContainerBox}>
-          <TouchableOpacity
-            style={styles.profileContentBox}
-            onPress={() => navigation.navigate("FarmerMarketDetails")}
-          >
-            <Image
-              source={require("../../assets/images/market.png")}
-              style={styles.profileContentPic}
-            />
+          <View style={styles.profileContentContainerBox}>
+            <TouchableOpacity
+              style={styles.profileContentBox}
+              onPress={() => navigation.navigate("FarmerMarketDetails")}
+            >
+              <Ionicons name="wallet" size={34} color={colors.otherprimary} />
 
-            <Text style={styles.profileContentText}>Farmer's Market</Text>
-          </TouchableOpacity>
+              <Text style={styles.profileContentText}>Wallet</Text>
+            </TouchableOpacity>
 
-          <TouchableOpacity style={styles.profileContentBox}>
-            <Image
-              source={require("../../assets/images/coin.png")}
-              style={styles.profileContentPic}
-            />
+            <TouchableOpacity style={styles.profileContentBox}>
+              <MaterialIcons
+                name="security"
+                size={34}
+                color={colors.otherprimary}
+              />
 
-            <Text style={styles.profileContentText}>Referal</Text>
-          </TouchableOpacity>
-        </View>
+              <Text style={styles.profileContentText}>Security</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.profileContentContainerBox}>
+            <TouchableOpacity
+              style={styles.profileContentBox}
+              onPress={() => navigation.navigate("FarmerMarketDetails")}
+            >
+              <MaterialIcons
+                name="storefront"
+                size={34}
+                color={colors.otherprimary}
+              />
+              <Text style={styles.profileContentText}>Farmer's Market</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.profileContentBox}
+              onPress={() => navigation.navigate("Logistics")}
+            >
+              <FontAwesome name="truck" size={34} color={colors.otherprimary} />
 
-        <View style={styles.profileContentContainerBox}>
-          <TouchableOpacity
-            style={styles.profileContentBox}
-            onPress={() => navigation.navigate("Logistics")}
-          >
-            <Image
-              source={require("../../assets/images/truck1.png")}
-              style={styles.profileContentPic}
-            />
+              <Text style={styles.profileContentText}>Logistics</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.profileContentContainerBox}>
+            <TouchableOpacity style={styles.profileContentBox}>
+              <FontAwesome name="users" size={34} color={colors.otherprimary} />
 
-            <Text style={styles.profileContentText}>Logistics</Text>
-          </TouchableOpacity>
+              <Text style={styles.profileContentText}>Refer and Earn</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.profileContentBox}>
+              <FontAwesome
+                name="question"
+                size={34}
+                color={colors.otherprimary}
+              />
+              <Text style={styles.profileContentText}>FAQ</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.profileContentContainerBox}>
+            <TouchableOpacity
+              style={styles.profileContentBox}
+              onPress={() => navigation.navigate("FarmerMarketDetails")}
+            >
+              <MaterialCommunityIcons
+                name="checkbox-intermediate"
+                size={34}
+                color={colors.otherprimary}
+              />
 
-          <TouchableOpacity style={styles.profileContentBox} onPress={handleLogout}>
-            <Image
-              source={require("../../assets/images/door.png")}
-              style={styles.profileContentPic}
-            />
+              <Text style={styles.profileContentText}>Terms of Service</Text>
+            </TouchableOpacity>
 
-            <Text style={styles.profileContentText}>Log Out</Text>
-          </TouchableOpacity>
-        </View>
-      </VirtualizedList>
+            <TouchableOpacity style={styles.profileContentBox}>
+              <MaterialIcons
+                name="privacy-tip"
+                size={34}
+                color={colors.otherprimary}
+              />
+
+              <Text style={styles.profileContentText}>Privacy Policy</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.profileContentContainerBox}>
+            <TouchableOpacity
+              style={styles.profileContentBox}
+              onPress={handleLogout}
+            >
+              <Ionicons name="log-out" size={34} color={colors.otherprimary} />
+
+              <Text style={styles.profileContentText}>Log Out</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
@@ -253,7 +303,9 @@ const styles = StyleSheet.create({
 
   storeNameContainer: {
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
+    paddingHorizontal: 15,
   },
 
   storeNameBox: {
@@ -278,16 +330,13 @@ const styles = StyleSheet.create({
   },
 
   followStatContainer: {
-    marginTop: 23,
-    marginBottom: 15,
-    height: 30,
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "row",
   },
 
   followInfoStatBox: {
-    paddingHorizontal: 35,
+    paddingHorizontal: 4,
   },
 
   followTextNumber: {
@@ -302,9 +351,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.gray,
   },
+  scrollSize: {
+    paddingTop: 10,
+    height: 350,
+  },
+  contentContainer: {
+    marginTop: 20,
+  },
 
   profileContentContainer: {
-    // alignItems: "center",
     justifyContent: "space-evenly",
   },
 
@@ -321,16 +376,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "white",
-    shadowColor: "black",
-    shadowOpacity: 0.9,
-    shadowOffset: { width: 0, height: 4 },
-    shadowRadius: 15,
+    shadowColor: "#333",
+    shadowOpacity: 0.5,
+    shadowOffset: { width: 0, height: 1 },
+    shadowRadius: 2,
     elevation: 3,
+    padding: 10,
   },
 
   profileContentPic: {
-    width: 60,
-    height: 60,
+    width: 40,
+    height: 40,
   },
 
   profileContentText: {
