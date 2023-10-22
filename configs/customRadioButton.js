@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import colors from "./colors";
 
-export default RadioButton = ({ options, handleOptionSelect , selectedOption }) => {
+export default RadioButton = ({ options, handleOptionSelect , selectedOption ,customContainerStyle}) => {
   return (
     <View>
       {options.map((option) => (
         <TouchableOpacity
           key={option}
           onPress={() => handleOptionSelect(option)}
-          style={styles.touchable}
+          style={[styles.touchable,customContainerStyle]}
         >
           <View
             style={{

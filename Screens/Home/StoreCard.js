@@ -2,17 +2,12 @@ import {
   View,
   StyleSheet,
   Image,
-  SafeAreaView,
-  Platform,
   TouchableOpacity,
   Text,
-  TextInput,
-  TextInputComponent,
   Modal,
 } from "react-native";
 import React, { useState } from "react";
 import colors from "../../configs/colors";
-import GlassmorphicInput from "../../configs/GlassmorphicInput";
 import { AntDesign } from "@expo/vector-icons";
 import StoreDetail from "./StoreDetails";
 

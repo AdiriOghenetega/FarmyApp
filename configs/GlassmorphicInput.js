@@ -2,7 +2,7 @@ import { useState } from 'react';
 import {View, TextInput, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import colors from './colors';
 
-const GlassmorphicInput = ({ placeholder, value, onChangeText, isPassword}) => {
+const GlassmorphicInput = ({ placeholder, value, onChangeText, isPassword,isMultiline,customStyle}) => {
 
     const [showPassword, setShowPassword] = useState(true);
 
@@ -22,12 +22,13 @@ const GlassmorphicInput = ({ placeholder, value, onChangeText, isPassword}) => {
     return (
       <View style={styles.textInputContainer}>
         <TextInput
-          style={styles.textInput}
+          style={[styles.textInput,customStyle]}
           placeholder={placeholder}
           placeholderTextColor="rgba(0, 0, 0, 0.6)"
           value={value}
           onChangeText={onChangeText}
           secureTextEntry={!showPassword}
+          multiline={isMultiline}
         />
 
         <TouchableOpacity 
@@ -62,8 +63,7 @@ const GlassmorphicInput = ({ placeholder, value, onChangeText, isPassword}) => {
         fontSize: 14,
         fontFamily: 'RalewayMedium',
         color: colors.black,
-        width: "100%"
-        
+        width: "100%" 
     },
 
     hideText: {

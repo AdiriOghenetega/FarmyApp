@@ -6,6 +6,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import navigationtheme from './app/navigators/navigationtheme';
 import AppNavigator from './app/navigators/AppNavigator';
 import { UserContextProvider } from './Context/UserContext';
+import MyWebView from './app/navigators/webView';
+import { LogBox } from "react-native";
+
+LogBox.ignoreLogs([
+  "Constants.platform.ios.model has been deprecated in favor of expo-device's Device.modelName property. This API will be removed in SDK 45."
+]);
 
 const App = () => {
   // STATE FOR ONBOARDING SCREEN
@@ -42,7 +48,7 @@ const App = () => {
         {showOnboard ? (
           <Onboard handleDone={handleOnboardFinish} />
         ) : (
-          <AppNavigator />
+          <MyWebView />
         )}
       </NavigationContainer>
     </View>

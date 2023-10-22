@@ -56,7 +56,8 @@ export default function ProfileScreen({ navigation }) {
               />
             </View>
 
-            <TouchableOpacity style={styles.blurArrowContainer}>
+            <TouchableOpacity style={styles.blurArrowContainer}
+            onPress={()=>navigation.navigate("EditProfile")}>
               <Ionicons name="settings" size={24} color={colors.white} />
             </TouchableOpacity>
           </View>
@@ -104,7 +105,7 @@ export default function ProfileScreen({ navigation }) {
           <View style={styles.profileContentContainerBox}>
             <TouchableOpacity
               style={styles.profileContentBox}
-              onPress={() => navigation.navigate("StoreDetail")}
+              onPress={() => navigation.navigate("Mystore")}
             >
               <MaterialIcons
                 name="store"
@@ -159,14 +160,15 @@ export default function ProfileScreen({ navigation }) {
           <View style={styles.profileContentContainerBox}>
             <TouchableOpacity
               style={styles.profileContentBox}
-              onPress={() => navigation.navigate("FarmerMarketDetails")}
+              onPress={() => navigation.navigate("Wallet")}
             >
               <Ionicons name="wallet" size={34} color={colors.otherprimary} />
 
               <Text style={styles.profileContentText}>Wallet</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.profileContentBox}>
+            <TouchableOpacity style={styles.profileContentBox}
+            onPress={() => navigation.navigate("Security")}>
               <MaterialIcons
                 name="security"
                 size={34}
@@ -179,7 +181,7 @@ export default function ProfileScreen({ navigation }) {
           <View style={styles.profileContentContainerBox}>
             <TouchableOpacity
               style={styles.profileContentBox}
-              onPress={() => navigation.navigate("FarmerMarketDetails")}
+              onPress={() => navigation.navigate("Farmersmarket")}
             >
               <MaterialIcons
                 name="storefront"
@@ -198,12 +200,14 @@ export default function ProfileScreen({ navigation }) {
             </TouchableOpacity>
           </View>
           <View style={styles.profileContentContainerBox}>
-            <TouchableOpacity style={styles.profileContentBox}>
+            <TouchableOpacity style={styles.profileContentBox}
+            onPress={() => navigation.navigate("Refferal")}>
               <FontAwesome name="users" size={34} color={colors.otherprimary} />
 
               <Text style={styles.profileContentText}>Refer and Earn</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.profileContentBox}>
+            <TouchableOpacity style={styles.profileContentBox}
+            onPress={() => navigation.navigate("Faq")}>
               <FontAwesome
                 name="question"
                 size={34}
@@ -215,7 +219,7 @@ export default function ProfileScreen({ navigation }) {
           <View style={styles.profileContentContainerBox}>
             <TouchableOpacity
               style={styles.profileContentBox}
-              onPress={() => navigation.navigate("FarmerMarketDetails")}
+              onPress={() => navigation.navigate("TermsOfService")}
             >
               <MaterialCommunityIcons
                 name="checkbox-intermediate"
@@ -226,7 +230,8 @@ export default function ProfileScreen({ navigation }) {
               <Text style={styles.profileContentText}>Terms of Service</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.profileContentBox}>
+            <TouchableOpacity style={styles.profileContentBox}
+            onPress={() => navigation.navigate("Privacy")}>
               <MaterialIcons
                 name="privacy-tip"
                 size={34}

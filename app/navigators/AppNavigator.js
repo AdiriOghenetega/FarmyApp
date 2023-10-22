@@ -12,8 +12,16 @@ import RegisterOptions from "../../Screens/Auth/RegisterOptions";
 import ForgotPassword from "../../Screens/Auth/ForgotPassword";
 import OtpScreen from "../../Screens/Auth/OtpScreen";
 import ResetPassword from "../../Screens/Auth/ResetPassword";
-import Checkout from "../../Screens/Order/Checkout";
 import Order from "../../Screens/Order/order";
+import Wallet from "../../Screens/Wallet/wallet";
+import Security from "../../Screens/Profile/security";
+import Refferal from "../../Screens/Profile/refferal";
+import Faq from "../../Screens/Profile/faq";
+import TermsOfService from "../../Screens/Profile/terms";
+import Privacy from "../../Screens/Profile/privacy";
+import EditProfile from "../../Screens/Profile/editProfile";
+import Mystore from "../../Screens/MyStore/mystore";
+import Farmersmarket from "../../Screens/FarmersMarket/farmersmarket";
 //IMPORT TABBAR
 import MyTabBar from "./TabBar";
 import Context from "../../Context/UserContext";
@@ -134,6 +142,69 @@ const AppNavigator = ({ navigation }) => {
         options={{
           headerShown: false,
           tabBarStyle: { display: "none" },
+        }}
+      />
+      <Tab.Screen
+        name="Wallet"
+        component={Wallet}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Security"
+        component={Security}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Refferal"
+        component={Refferal}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Faq"
+        component={Faq}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="TermsOfService"
+        component={TermsOfService}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Privacy"
+        component={Privacy}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="EditProfile"
+        component={EditProfile}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Mystore"
+        component={Mystore}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Farmersmarket"
+        component={Farmersmarket}
+        options={{
+          headerShown: false,
         }}
       />
     </Tab.Navigator>
