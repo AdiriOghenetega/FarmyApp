@@ -18,19 +18,24 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.potash.newfarmyapp"
-  },
-  "android": {
-    "adaptiveIcon": {
-      "foregroundImage": "./assets/adaptive-icon.png",
-      "backgroundColor": "#ffffff"
     },
-    "package": "com.potash.newfarmyapp",
-  },
-  "web": {
-    "favicon": "./assets/favicon.png"
-  },
-  "plugins": [
-    "@react-native-google-signin/google-signin"
-  ]
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.potash.newfarmyapp"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "@react-native-google-signin/google-signin"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "d1f17100-904d-4e0a-bf14-0bc69cfe0efa"
+      }
+    }
   }
 }
