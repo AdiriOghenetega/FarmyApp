@@ -43,4 +43,10 @@ export const globalStyles = StyleSheet.create({
     color: colors.black,
     fontSize: 18,
   },
+  rightHeader: {
+    marginRight: 20,
+    position: "absolute",
+    right: 0,
+    zIndex: 2,
+  },
 });

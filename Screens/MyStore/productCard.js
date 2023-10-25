@@ -47,11 +47,11 @@ export default ProductCard;
 
 const styles = StyleSheet.create({
   container: {
-    width: 171,
+    width: 180,
     backgroundColor: colors.white,
     borderRadius: 10,
     padding: 10,
-    margin: 10,
+    margin: 5,
   },
   image: {
     width: 155,

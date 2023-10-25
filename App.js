@@ -10,7 +10,8 @@ import MyWebView from './app/navigators/webView';
 import { LogBox } from "react-native";
 
 LogBox.ignoreLogs([
-  "Constants.platform.ios.model has been deprecated in favor of expo-device's Device.modelName property. This API will be removed in SDK 45."
+  "Constants.platform.ios.model has been deprecated in favor of expo-device's Device.modelName property. This API will be removed in SDK 45.",
+  `Key "cancelled" in the image picker result is deprecated and will be removed in SDK 48, use "canceled" instead`
 ]);
 
 const App = () => {
@@ -48,7 +49,7 @@ const App = () => {
         {showOnboard ? (
           <Onboard handleDone={handleOnboardFinish} />
         ) : (
-          <MyWebView />
+          <AppNavigator />
         )}
       </NavigationContainer>
     </View>

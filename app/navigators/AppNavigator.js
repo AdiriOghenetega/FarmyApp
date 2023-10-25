@@ -22,6 +22,8 @@ import Privacy from "../../Screens/Profile/privacy";
 import EditProfile from "../../Screens/Profile/editProfile";
 import Mystore from "../../Screens/MyStore/mystore";
 import Farmersmarket from "../../Screens/FarmersMarket/farmersmarket";
+import Dashboard from "../../Screens/MyStore/dashboard";
+import Reviews from "../../Screens/MyStore/reviews";
 //IMPORT TABBAR
 import MyTabBar from "./TabBar";
 import Context from "../../Context/UserContext";
@@ -203,6 +205,20 @@ const AppNavigator = ({ navigation }) => {
       <Tab.Screen
         name="Farmersmarket"
         component={Farmersmarket}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Dashboard"
+        component={Dashboard}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="Reviews"
+        component={Reviews}
         options={{
           headerShown: false,
         }}

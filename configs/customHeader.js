@@ -1,9 +1,9 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
-import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import colors from "./colors";
 
-export default function CustomHeader({ title, handleNavigate , rightHeader}) {
+export default function CustomHeader({ title, handleNavigate, rightHeader }) {
   return (
     <View style={styles.headerTitle}>
       <View style={styles.arrowIcon}>

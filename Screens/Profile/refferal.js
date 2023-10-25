@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import CustomHeader from "../../configs/customHeader";
+import CustomButton from "../../configs/CustomButton";
 import Chart from "./chart";
 import ReferralTerms from "./referralTerms";
 import { globalStyles } from "../../styles/globalStyles";
@@ -22,7 +23,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const { height, width } = Dimensions.get("window");
 
-export default function Refferal({navigation}) {
+export default function Refferal({ navigation }) {
   const [showTerms, setShowTerms] = useState(false);
 
   const handleNavigate = () => {
@@ -36,7 +37,10 @@ export default function Refferal({navigation}) {
   const rightHeader = {
     exists: true,
     component: (
-      <TouchableOpacity style={styles.rightHeader} onPress={handleShowTerms}>
+      <TouchableOpacity
+        style={globalStyles.rightHeader}
+        onPress={handleShowTerms}
+      >
         <Text>{showTerms ? "Statistics" : "Terms"}</Text>
       </TouchableOpacity>
     ),
@@ -70,7 +74,19 @@ export default function Refferal({navigation}) {
       />
       <View style={styles.container}>
         <View style={styles.firstSection}>
-          {!showTerms ? <Chart /> : <ReferralTerms />}
+          {!showTerms ? <Chart title={"Referral income"} /> : <ReferralTerms />}
+          {!showTerms && (
+            <View
+              style={[globalStyles.flexRow, styles.withdrawButtonContainer]}
+            >
+              <Text style={styles.title}>N2,980.00</Text>
+              <CustomButton
+                buttonLabel={"Withdraw"}
+                customStyle={styles.button}
+                customLabelStyle={styles.buttonLabel}
+              />
+            </View>
+          )}
         </View>
         <View style={styles.secondSection}>
           <View style={globalStyles.customHr}></View>
@@ -139,11 +155,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     height: height - 160,
     justifyContent: "space-between",
-  },
-  rightHeader: {
-    marginRight: 20,
-    position: "absolute",
-    right: 0,
   },
   title: {
     fontSize: 18,

@@ -56,8 +56,10 @@ export default function ProfileScreen({ navigation }) {
               />
             </View>
 
-            <TouchableOpacity style={styles.blurArrowContainer}
-            onPress={()=>navigation.navigate("EditProfile")}>
+            <TouchableOpacity
+              style={styles.blurArrowContainer}
+              onPress={() => navigation.navigate("EditProfile")}
+            >
               <Ionicons name="settings" size={24} color={colors.white} />
             </TouchableOpacity>
           </View>
@@ -167,8 +169,10 @@ export default function ProfileScreen({ navigation }) {
               <Text style={styles.profileContentText}>Wallet</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.profileContentBox}
-            onPress={() => navigation.navigate("Security")}>
+            <TouchableOpacity
+              style={styles.profileContentBox}
+              onPress={() => navigation.navigate("Security")}
+            >
               <MaterialIcons
                 name="security"
                 size={34}
@@ -200,14 +204,18 @@ export default function ProfileScreen({ navigation }) {
             </TouchableOpacity>
           </View>
           <View style={styles.profileContentContainerBox}>
-            <TouchableOpacity style={styles.profileContentBox}
-            onPress={() => navigation.navigate("Refferal")}>
+            <TouchableOpacity
+              style={styles.profileContentBox}
+              onPress={() => navigation.navigate("Refferal")}
+            >
               <FontAwesome name="users" size={34} color={colors.otherprimary} />
 
               <Text style={styles.profileContentText}>Refer and Earn</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.profileContentBox}
-            onPress={() => navigation.navigate("Faq")}>
+            <TouchableOpacity
+              style={styles.profileContentBox}
+              onPress={() => navigation.navigate("Faq")}
+            >
               <FontAwesome
                 name="question"
                 size={34}
@@ -230,8 +238,10 @@ export default function ProfileScreen({ navigation }) {
               <Text style={styles.profileContentText}>Terms of Service</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.profileContentBox}
-            onPress={() => navigation.navigate("Privacy")}>
+            <TouchableOpacity
+              style={styles.profileContentBox}
+              onPress={() => navigation.navigate("Privacy")}
+            >
               <MaterialIcons
                 name="privacy-tip"
                 size={34}
@@ -242,6 +252,18 @@ export default function ProfileScreen({ navigation }) {
             </TouchableOpacity>
           </View>
           <View style={styles.profileContentContainerBox}>
+            <TouchableOpacity
+              style={styles.profileContentBox}
+              onPress={() => navigation.navigate("Dashboard")}
+            >
+              <MaterialCommunityIcons
+                name="tablet-dashboard"
+                size={34}
+                color={colors.otherprimary}
+              />
+
+              <Text style={styles.profileContentText}>Dashboard</Text>
+            </TouchableOpacity>
             <TouchableOpacity
               style={styles.profileContentBox}
               onPress={handleLogout}

@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import React from "react";
-import CustomButton from "../../configs/CustomButton";
 import SelectDropdown from "react-native-select-dropdown";
 import colors from "../../configs/colors";
 import { globalStyles } from "../../styles/globalStyles";
@@ -9,7 +8,7 @@ import { BarChart } from "react-native-gifted-charts";
 
 const { height, width } = Dimensions.get("window");
 
-export default function Chart() {
+export default function Chart({ title, customHeight }) {
   const options = ["Last Week", "Last Month", "Last Year"];
   const chartData = [
     { value: 50, label: "Sun" },
@@ -23,7 +22,7 @@ export default function Chart() {
   return (
     <View>
       <View style={globalStyles.flexRow}>
-        <Text style={styles.title}>Referral income</Text>
+        <Text style={styles.title}>{title}</Text>
         <View>
           <SelectDropdown
             data={options}
@@ -54,15 +53,7 @@ export default function Chart() {
           barWidth={10}
           spacing={27}
           width={width - 100}
-          height={150}
-        />
-      </View>
-      <View style={[globalStyles.flexRow, styles.withdrawButtonContainer]}>
-        <Text style={styles.title}>N2,980.00</Text>
-        <CustomButton
-          buttonLabel={"Withdraw"}
-          customStyle={styles.button}
-          customLabelStyle={styles.buttonLabel}
+          height={customHeight || 150}
         />
       </View>
     </View>

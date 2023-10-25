@@ -10,10 +10,11 @@ import React, { useState } from "react";
 import colors from "../../configs/colors";
 import { AntDesign } from "@expo/vector-icons";
 import StoreDetail from "./StoreDetails";
+import CustomStars from "../../configs/customStars";
 
-const StoreCard = ({ imageUrl, storeName, storeDescription, distance}) => {
+const StoreCard = ({ imageUrl, storeName, storeDescription, distance }) => {
   const [openStoreDetails, setOpenStoreDetails] = useState(false);
-  
+
   return (
     <View style={styles.container}>
       <Modal visible={openStoreDetails}>
@@ -35,13 +36,7 @@ const StoreCard = ({ imageUrl, storeName, storeDescription, distance}) => {
         </View>
 
         <View style={styles.storeRatings}>
-          <View style={styles.storeStars}>
-            <AntDesign name="star" size={12} color={colors.lightgold} />
-            <AntDesign name="star" size={12} color={colors.lightgold} />
-            <AntDesign name="star" size={12} color={colors.lightgold} />
-            <AntDesign name="star" size={12} color={colors.lightgold} />
-            <AntDesign name="star" size={12} color={colors.lightgold} />
-          </View>
+          <CustomStars />
 
           <View>
             <Text style={styles.storeDistance}>{distance}</Text>
