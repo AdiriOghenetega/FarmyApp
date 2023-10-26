@@ -11,7 +11,8 @@ import { LogBox } from "react-native";
 
 LogBox.ignoreLogs([
   "Constants.platform.ios.model has been deprecated in favor of expo-device's Device.modelName property. This API will be removed in SDK 45.",
-  `Key "cancelled" in the image picker result is deprecated and will be removed in SDK 48, use "canceled" instead`
+  `Key "cancelled" in the image picker result is deprecated and will be removed in SDK 48, use "canceled" instead`,
+  "Sending `onAnimatedValueUpdate` with no listeners registered."
 ]);
 
 const App = () => {

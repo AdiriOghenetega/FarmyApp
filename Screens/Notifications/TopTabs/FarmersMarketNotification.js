@@ -1,131 +1,98 @@
-import { View,  StyleSheet, FlatList, ScrollView} from 'react-native'
-import navigationTheme from '../../../app/navigators/navigationtheme'
-            // COLORS
-import colors from '../../../configs/colors'
-import ListCard from '../ListCard'
-
+import { StyleSheet, FlatList } from "react-native";
+import ListCard from "../ListCard";
 
 const Notifications = [
-    {
-        id: 1,
-        image:require("../../../assets/images/profilepic.jpg"),
-        CompText: "Damilare Afolabi mentioned you in a comment"
-    },
+  {
+    id: 1,
+    title: "Product Rating Notification",
+    type: "rating",
+    CompText: "Damilare Afolabi mentioned you in a comment",
+  },
 
-    
-    {
-        id: 2,
-        image:require("../../../assets/images/[profilepic]1.jpg"),
-        CompText: "Confirm your Email Address to complete your profile"
-    },
+  {
+    id: 2,
+    title: "Order notification",
+    type: "orderNotification",
+    CompText: "Confirm your Email Address to complete your profile",
+  },
 
-    {
-        id: 3,
-        image:require("../../../assets/images/[profilepic]2.jpg"),
-        CompText: "Damilare Afolabi mentioned you in a comment"
-    },
+  {
+    id: 3,
+    title: "Order cancelled",
+    type: "orderCanceled",
+    CompText: "Damilare Afolabi mentioned you in a comment",
+  },
 
-    {
-        id: 4,
-        image:require("../../../assets/images/[profilepic]3.jpg"),
-        CompText: "Check out this new products from FoodCo"
-    },
+  {
+    id: 4,
+    title: "Product Rating Notification",
+    type: "rating",
+    CompText: "Check out this new products from FoodCo",
+  },
 
-    {
-      id: 5,
-      image:require("../../../assets/images/[profilepic]3.jpg"),
-      CompText: "Check out this new products from FoodCo"
+  {
+    id: 5,
+    title: "Order notification",
+    type: "orderNotification",
+    CompText: "Check out this new products from FoodCo",
   },
 
   {
     id: 6,
-    image:require("../../../assets/images/[profilepic]3.jpg"),
-    CompText: "Check out this new products from FoodCo"
-},
+    title: "Product Rating Notification",
+    type: "rating",
+    CompText: "Check out this new products from FoodCo",
+  },
 
-{
-  id: 7,
-  image:require("../../../assets/images/[profilepic]3.jpg"),
-  CompText: "Check out this new products from FoodCo"
-},
+  {
+    id: 7,
+    title: "Order notification",
+    type: "orderNotification",
+    CompText: "Check out this new products from FoodCo",
+  },
 
-{
-  id: 8,
-  image:require("../../../assets/images/[profilepic]3.jpg"),
-  CompText: "Check out this new products from FoodCo"
-},
-]
+  {
+    id: 8,
+    title: "Product Rating Notification",
+    type: "rating",
+    CompText: "Check out this new products from FoodCo",
+  },
+];
 
-const VirtualizedList = ({children}) => {
+const VirtualizedList = ({ children }) => {
   return (
-      <FlatList
-          data={[]}
-          keyExtractor={() => "key"}
-          renderItem={null}
-          ListHeaderComponent={
-              <>{children}</>
-          }
-      />
-  )
-}
+    <FlatList
+      data={[]}
+      keyExtractor={() => "key"}
+      renderItem={null}
+      ListHeaderComponent={<>{children}</>}
+    />
+  );
+};
 
-const FarmersMarketNotification = ({navigation}) => {
+const FarmersMarketNotification = () => {
   return (
     <VirtualizedList style={styles.container}>
-
-        <FlatList 
-            data={Notifications}
-            keyExtractor={(Notification) => Notification.id.toString()}
-            renderItem={({item}) => (
-                <ListCard 
-                    imageUrl={item.image}
-                    compText={item.CompText}
-                    onPress={()=> navigation.navigate("ProductDetails")}
-                />
-            )}
-        />
-
-        
+      <FlatList
+        data={Notifications}
+        keyExtractor={(Notification) => Notification.id.toString()}
+        renderItem={({ item }) => (
+          <ListCard
+            title={item.title}
+            compText={item.CompText}
+            type={item.type}
+          />
+        )}
+      />
     </VirtualizedList>
-  )
-}
+  );
+};
+
+export default FarmersMarketNotification;
 
 const styles = StyleSheet.create({
-    container: {
-      borderWidth: 10,
-      height: 100
-    },
-
-    notificationsContainer:{
-        borderColor: colors.lightgray,
-        borderBottomWidth: 0.5,
-        paddingHorizontal: 34,
-        paddingVertical: 10,
-        justifyContent: "center",
-        flexDirection: "row"
-      },
-  
-      accountImageContainer:{
-        height: 59,
-        width: 59,
-        borderRadius: 50
-      },
-  
-      accountImage:{
-        width: 59,
-        height: 59,
-        borderRadius: 50
-  
-      },
-  
-      notificationsTextContainer:{
-        justifyContent: "center",
-        paddingLeft: 10
-      },
-  
-      notificationsText:{
-          fontFamily: "RalewayMedium",
-          color: colors.primary
-      }
-})
-export default FarmersMarketNotification
+  container: {
+    borderWidth: 10,
+    height: 100,
+  },
+});
